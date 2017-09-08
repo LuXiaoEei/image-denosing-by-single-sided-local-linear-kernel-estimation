@@ -1,5 +1,5 @@
 ### local kernel estimator 局部线性核估计 针对边缘采用分割支撑集的方式
-#requireNamespace('data.table')
+
 LKE_side <- function(m,n,h,
                 data,
                 SearchPoints0,
@@ -9,7 +9,6 @@ LKE_side <- function(m,n,h,
                 ymin=-1000,
                 ymax=1000,
                 scale){
-  #require(data.table)
   data <- as.data.table(data)
   Area <- SearchPoints(m,n,SearchPoints0,xmin,xmax,ymin,ymax)
   Area <-merge(Area,data,by=c("x","y"))
@@ -32,21 +31,6 @@ LKE_side <- function(m,n,h,
   Area$sep <- beta[2,1]*Area[,1]+beta[3,1]*Area[,2]#计算在切线上下
   Area1 <- subset(Area,sep>=0)
   Area2 <- subset(Area,sep<=0)#支撑集分割
-  # beta1 <- NA
-  # beta2 <- NA
-  # if (nrow(Area1)>1){
-  #   beta1 <- WLS(Area1[,c('x','y','z')],W=diag(Area1$K))
-  # }
-  # if (nrow(Area2)>1){
-  #   beta2 <- WLS(Area2[,c('x','y','z')],W=diag(Area2$K))
-  # }
-  # if(nrow(Area1)<=1|nrow(Area2)<=1){
-  #   beta1 <- beta
-  #   beta2 <- beta
-  # }else{
-  #   beta1 <- WLS(Area1[,c('x','y','z')],W=diag(Area1$K))
-  #   beta2 <- WLS(Area2[,c('x','y','z')],W=diag(Area2$K))
-  # }
 
   #一以下对于报错一方面是某类只有一个点，或者某类的所有点的某个维度的坐标相等导致矩阵不可逆，这里为了计算的效率，采用NA，这不影响最后的结果。
   beta1 <- tryCatch({

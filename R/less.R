@@ -1,3 +1,4 @@
+## 自定义带有NA的大小比较规则
 less <- function(data){
   x <- data[1]
   y <- data[2]

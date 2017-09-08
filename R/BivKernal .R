@@ -1,4 +1,4 @@
-### bivariate kernal二元 核函数要求输入的只是-1到1之间
+### bivariate kernal二元 核函数支撑要求输入值在-1到1之间
 BivKernal <- function(x,y,h=0.01){
   x <- x/h
   y <- y/h
