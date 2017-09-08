@@ -11,7 +11,7 @@ Imports:
     data.table
 Suggests:
     EBImage
-Description: It's a package that can be used to do image denosing by singe local linear kernel estimation
+Description:used to do image denosing by singe local linear kernel estimation for R
     Use four spaces when indenting paragraphs within the Description.
 License: 
 Encoding: UTF-8
