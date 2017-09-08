@@ -2,8 +2,8 @@ Package: picture
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author:luxiaolei
+Maintainer: luxiaolei
 Depends:
     R (>= 3.1.0)
 Imports:
@@ -11,8 +11,8 @@ Imports:
     data.table
 Suggests:
     EBImage
-Description: More about what it does (maybe more than one line)
+Description: It's a package that can be used to do image denosing by singe local linear kernel estimation
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: 
 Encoding: UTF-8
 LazyData: true
