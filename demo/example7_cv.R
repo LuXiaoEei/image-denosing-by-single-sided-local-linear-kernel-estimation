@@ -51,13 +51,10 @@ cv2 <- function(i,j){
 
 res <- lapply(c(2:11),cv1)  #对h遍历
 fin <- mapply(cv2,i=rep(c(1:10),each=200),j=rep(c(seq(0.01,1,0.01),2:101),10))# 每个h对u遍历
-fin[,which(fin[3,]==min(fin[3,])),drop=FALSE] #选出最小残差平方和的组合
+MIN <- fin[,which(fin[3,]==min(fin[3,])),drop=FALSE] #选出最小残差平方和的组合
 
 
-result2 <- judge_u(data=res[[1]],u=0.0002599)
-result2 <- judge_u(data=hat2_Z,u=0.0002599*4) #选择估计值
-#计算积分均方误差
-MISE(result2[,7],test2[,3])
+result2 <- judge_u(data=res[[MIN[1]]],u=0.0002599*MIN[2]) #选择估计值
 
 display(matrix(result2[,1],128))#局部线性核光滑
 display(matrix(result2[,2],128))#大于0部分局部线性核光滑
