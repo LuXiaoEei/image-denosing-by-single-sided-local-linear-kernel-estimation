@@ -1,5 +1,6 @@
 require(data.table)
 require(EBImage)
+require(SSLKE)
 f1 <- function(x,y){
   z <- -2*(x-0.5)^2-2*(y-0.5)^2+sign((x-0.5)^2+(y-0.5)^2<0.25^2)
 return(z)

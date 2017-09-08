@@ -1,6 +1,6 @@
 require(data.table)
 require(EBImage)
-require(picture)
+require(SSLKE)
 
 # 模拟函数
 f1 <- function(x,y){
