@@ -3,7 +3,7 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author:luxiaolei
-Maintainer: luxiaolei
+Maintainer: luxiaolei<438719297@qq.com>
 Depends:
     R (>= 3.1.0)
 Imports:
@@ -12,7 +12,6 @@ Imports:
 Suggests:
     EBImage
 Description:used to do image denosing by singe local linear kernel estimation for R
-    Use four spaces when indenting paragraphs within the Description.
-License: 
+License:
 Encoding: UTF-8
 LazyData: true

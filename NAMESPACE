@@ -1,4 +1,4 @@
-exportPattern("^[[:alpha:]]+")
 import(dplyr)
 import(data.table)
+export(SearchPoints0,SearchPoint,LKE_side,MISE,judge_u)
 
