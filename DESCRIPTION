@@ -12,7 +12,6 @@ Imports:
 Suggests:
     EBImage
 Description:used to do image denosing by singe local linear kernel estimation for R
-    Use four spaces when indenting paragraphs within the Description.
-License: 
+License: MIT
 Encoding: UTF-8
 LazyData: true
