@@ -34,7 +34,7 @@ LKE_side <- function(m,n,h,
 
   #一以下对于报错一方面是某类只有一个点，或者某类的所有点的某个维度的坐标相等导致矩阵不可逆，这里为了计算的效率，采用NA，这不影响最后的结果。
   beta1 <- tryCatch({
-    WLS(Area1[,c('x','y','z')],W=diag(Area1$K,nrow=length(W)))
+    WLS(Area1[,c('x','y','z')],W=diag(Area1$K,nrow=length(Area1$K)))
     },error=function(e){
       #WLS(Area2[,c('x','y','z')],W=diag(Area2$K))
       matrix(c(NA,NA,NA))
@@ -49,7 +49,7 @@ LKE_side <- function(m,n,h,
                             W = Area1$K))
 
   beta2 <-tryCatch({
-    WLS(Area2[,c('x','y','z')],W=diag(Area2$K))
+    WLS(Area2[,c('x','y','z')],W=diag(Area2$K,nrow=length(Area2$K)))
   },error=function(e){
     #beta1
     matrix(c(NA,NA,NA))
