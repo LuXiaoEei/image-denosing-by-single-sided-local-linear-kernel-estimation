@@ -1,7 +1,8 @@
 ## CV
 require(data.table)
 require(EBImage)
-require(picture)
+require(SSLKE)
+
 f2 <- function(x,y){
   z <- 0.25*(1-x)*y+(1+0.2*sin(2*pi*x))*sign(y>0.6*sin(pi*x)+0.2)
   return(z)
