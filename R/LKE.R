@@ -7,10 +7,13 @@ LKE <- function(m,n,h,
                 xmax=1000,
                 ymin=-1000,
                 ymax=1000,
-                scale){
+                scale,
+                Dist,
+                index){
   data <- as.data.table(data)
-  Area <- SearchPoints(m,n,SearchPoints0,xmin,xmax,ymin,ymax)#寻找邻域内的点
-  Area <-merge(Area,data,by=c("x","y"))#从输入数据中匹配出邻域内的点的各值
+  # Area <- SearchPoints(m,n,SearchPoints0,xmin,xmax,ymin,ymax)#寻找邻域内的点
+  # Area <-merge(Area,data,by=c("x","y"))#从输入数据中匹配出邻域内的点的各值
+  Area <- data[Dist[,index]<=h]
   #if(kernel=='bivariate kernal'){
   Area$x <-  Area$x-m
   Area$y <-  Area$y-n

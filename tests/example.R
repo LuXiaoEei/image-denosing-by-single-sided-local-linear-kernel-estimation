@@ -15,24 +15,30 @@ display(matrix(test[['z']],100))#原图
 
 display(matrix(Test[['z']],100))#加噪
 
+Dist <- as.matrix(dist(test[,c('x','y')]))
 time1 <- Sys.time()
 hat_z <- c()
 Test <- as.data.frame(Test)
 SearchPoints0 <- SearchPoints0(h=5)
 for (i in 1:nrow(Test)){
   print(Sys.time())
-  hat_z[i] <- LKE(m=Test[i,1],n=Test[i,2],h=5,
+  hat_z[i] <- SSLKE:::LKE(m=Test[i,1],n=Test[i,2],h=5,
       data=Test,
       SearchPoints0,
       xmin = 0,
       xmax = 100,
       ymin = 0,
       ymax = 100,
-      scale=100)[1,1]
+      scale=100,
+      Dist=Dist,
+      index=i)[1,1]
 }
 Sys.time()-time1
 
 display(matrix(hat_z,100))#局部线性核光滑
+
+
+
 
 Rprof("Rprof-mem.out", memory.profiling=TRUE)
 time1 <- Sys.time()
