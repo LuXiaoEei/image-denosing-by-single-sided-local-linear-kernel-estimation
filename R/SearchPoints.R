@@ -8,8 +8,12 @@ SearchPoints <- function(x=0,
                          ymin=-1000,
                          ymax=1000){
   #require(data.table)
-  PointsPosition <- SearchPoints0
-  PointsPosition <- data.table(x=PointsPosition$x+x,y=PointsPosition$y+y)
+  PointsPosition <- data.table(SearchPoints0+
+    matrix(rep(c(x,y),each=nrow(SearchPoints0)),ncol = 2)) 
+  # PointsPosition <- SearchPoints0
+  # PointsPosition <- data.table(x=PointsPosition$x+x,y=PointsPosition$y+y)
+  # PointsPosition <- data.frame(x=PointsPosition$x+x,y=PointsPosition$y+y)
+  # PointsPosition <- PointsPosition[x<=xmax&x>=xmin&y<=ymax&y>=ymin,]
   PointsPosition <- subset(PointsPosition,xmin<=x&x<=xmax&ymin<=y&y<=ymax) # 边界处理
   rownames(PointsPosition) <- c(1:nrow(PointsPosition))
   return(PointsPosition)

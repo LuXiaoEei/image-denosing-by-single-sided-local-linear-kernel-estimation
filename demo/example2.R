@@ -1,4 +1,3 @@
-require(data.table)
 require(EBImage)
 require(SSLKE)
 
@@ -7,10 +6,10 @@ f2 <- function(x,y){
   return(z)
 }
 
-test2 <- data.table(x=rep(c(0:127),128),y=rep(c(0:127),each=128))
+test2 <- data.frame(x=rep(c(0:127),128),y=rep(c(0:127),each=128))
 test2$z <-f2(test2[["x"]]/128,test2[["y"]]/128)/1.31415
 #set.seed(111)
-Test2 <- copy(test2)
+Test2 <- test2
 Test2$z <- test2[['z']]+rnorm(128^2,0,0.2^2)
 
 display(matrix(test2[['z']],128))#原图
@@ -34,7 +33,7 @@ for (i in 1:nrow(Test2)){
 }#论文中单边的局部线性核光滑
 Sys.time()-time1
 
-result2 <- judge_u(data=hat2_Z,u=0.0002599*4) #选择估计值
+result2 <- judge_u(data=hat2_Z,u=0.0002599*4)$data #选择估计值
 
 
 display(matrix(result2[,1],128))#局部线性核光滑

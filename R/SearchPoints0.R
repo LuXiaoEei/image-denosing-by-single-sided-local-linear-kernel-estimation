@@ -7,16 +7,18 @@ SearchPoints0 <- function(h,interval=1){
   #require(dplyr)
   n <- floor(h/interval)
   sapply(c(1:n),function(x) floor(sqrt(h^2-x^2)))
-  PointsPosition0 <- data.table()
+  PointsPosition0 <- data.frame()
   for(i in 0:n){
     H <- floor(sqrt(h^2-i^2))
-    PointsPosition0 <- data.table(x=rep(i,(H+1)),y=seq(0,H,by=1))%>%
-      rbind(PointsPosition0,.)
+    PointsPosition1 <- data.frame(x=rep(i,(H+1)),y=seq(0,H,by=1))
+    PointsPosition0 <- rbind(PointsPosition0,PointsPosition1)
   }
-  PointsPosition0 <- data.table(x=PointsPosition0$x,
-                                y=-PointsPosition0$y)%>%rbind(PointsPosition0,.)
-  PointsPosition0 <- data.table(x=-PointsPosition0$x,
-                                y=PointsPosition0$y)%>%rbind(PointsPosition0,.)
+  PointsPosition1 <- data.frame(x=PointsPosition0$x,
+                                y=-PointsPosition0$y)
+  PointsPosition0 <- rbind(PointsPosition0,PointsPosition1)
+  PointsPosition1 <- data.frame(x=-PointsPosition0$x,
+                                y=PointsPosition0$y)
+  PointsPosition0 <- rbind(PointsPosition0,PointsPosition1)
   PointsPosition0 <- unique.data.frame(PointsPosition0)   # 去重
   rownames(PointsPosition0) <- c(1:nrow(PointsPosition0))
   return(PointsPosition0)

@@ -1,4 +1,3 @@
-require(data.table)
 require(EBImage)
 require(picture)
 f3 <- function(x,y){
@@ -6,10 +5,10 @@ f3 <- function(x,y){
   return(z)
 }
 
-test3 <- data.table(x=rep(c(0:127),128),y=rep(c(0:127),each=128))
+test3 <- data.frame(x=rep(c(0:127),128),y=rep(c(0:127),each=128))
 test3$z <-(f3(test3[["x"]]/128,test3[["y"]]/128)+1)/2
 #set.seed(111)
-Test3 <- copy(test3)
+Test3 <- test3
 Test3$z <- test3[['z']]+rnorm(128^2,0,0.2^2)
 
 display(matrix(test3[['z']],128))#原图
@@ -33,7 +32,7 @@ for (i in 1:nrow(Test3)){
 }#论文中单边的局部线性核光滑
 Sys.time()-time1
 
-result3 <- judge_u(data=hat3_Z,u=0.0002599*8) #选择估计值
+result3 <- judge_u(data=hat3_Z,u=0.0002599*8)$data #选择估计值
 
 display(matrix(result3[,1],128))#局部线性核光滑
 display(matrix(result3[,2],128))#大于0部分局部线性核光滑

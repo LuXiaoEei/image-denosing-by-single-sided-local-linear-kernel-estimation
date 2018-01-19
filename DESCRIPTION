@@ -6,9 +6,7 @@ Author:luxiaolei
 Maintainer: luxiaolei<438719297@qq.com>
 Depends:
     R (>= 3.1.0)
-Imports:
-    dplyr,
-    data.table
+Imports:data.table
 Suggests:
     EBImage
 Description:used to do image denosing by singe local linear kernel estimation for R

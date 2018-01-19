@@ -6,6 +6,6 @@ judge_u <- function(data,u){
   # data$final[diff>u&data$X5==data$X6] <- (data$X2[diff>u&data$X5==data$X6]+
   #   data$X3[diff>u&data$X5==data$X6])/2
   data$final[diff>u&!comp] <- data$X3[diff>u&!comp]
-  return(data)
+  return(list(data=data,jumps=diff>u))
   }
 
